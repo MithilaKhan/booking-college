@@ -35,7 +35,7 @@ const Register = () => {
       console.log(loggedUser)
       updatePhotoName(loggedUser,name,photo)
       form.reset()
-      fetch("http://localhost:5000/user" , {
+      fetch("https://booking-college-server-mithilakhan.vercel.app/user" , {
       method:"POST" ,
             headers:{
                "content-type":"application/json"

@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         {
           path: "/details/:id",
           element:<PrivateRouter><Details/></PrivateRouter>,
-          loader:({params}) =>fetch(`http://localhost:5000/colleges/${params.id}`)
+          loader:({params}) =>fetch(`https://booking-college-server-mithilakhan.vercel.app/colleges/${params.id}`)
         },
         {
           path: "admission",
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         {
           path: "/admit/:id",
           element: <Admission/>,
-          loader:({params}) =>fetch(`http://localhost:5000/colleges/${params.id}`)
+          loader:({params}) =>fetch(`https://booking-college-server-mithilakhan.vercel.app/colleges/${params.id}`)
         },
         {
           path: "myCollege",
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         {
           path: "/updateInfo/:id" ,
           element: <UpdateInfo/> ,
-          loader:({params}) =>fetch(`http://localhost:5000/user/${params.id}`)
+          loader:({params}) =>fetch(`https://booking-college-server-mithilakhan.vercel.app/user/${params.id}`)
         }
       ],
     },

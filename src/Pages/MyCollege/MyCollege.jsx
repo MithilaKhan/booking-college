@@ -14,7 +14,7 @@ const MyCollege = () => {
   
 
     useEffect(()=>{
-    fetch(`http://localhost:5000/mycollege?email=${user?.email}`)
+    fetch(`https://booking-college-server-mithilakhan.vercel.app/mycollege?email=${user?.email}`)
     .then(res => res.json())
     .then(data =>{
         // console.log(data);
@@ -32,7 +32,7 @@ const MyCollege = () => {
         const userReview  = {review , rate } ;
         console.log(userReview);
 
-        fetch("http://localhost:5000/review" , {
+        fetch("https://booking-college-server-mithilakhan.vercel.app/review" , {
             method:"POST" ,
             headers:{
                "content-type":"application/json"

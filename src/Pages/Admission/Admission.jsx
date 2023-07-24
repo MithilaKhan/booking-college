@@ -24,7 +24,7 @@ const Admission = () => {
         const candidateInfo = {name ,email,subject,clgName,clgId ,phone,address,birth,image}
         console.log(candidateInfo);
 
-        fetch("http://localhost:5000/candidate" , {
+        fetch("https://booking-college-server-mithilakhan.vercel.app/candidate" , {
             method:"POST" ,
             headers:{
                "content-type":"application/json"

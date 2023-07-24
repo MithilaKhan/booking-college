@@ -1,15 +1,16 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from 'react-icons/fa';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, sendPasswordResetEmail, signInWithPopup } from "firebase/auth";
 import app from "../../FIrebase/firebase.config";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const auth = getAuth(app);
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
-  
+    const githubProvider = new GithubAuthProvider();
+  const emailRef = useRef()
     
     const { login } = useContext(AuthContext);
     const [error, setError] = useState("");
@@ -55,6 +56,38 @@ const Login = () => {
         console.log(errorMessage);
       });
      }
+     
+     // github sign in
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  };
+
+     
+
+     const handleForgetpass = () =>{
+ const email= emailRef.current.value 
+ console.log(email);
+ if(!email){
+  alert("Please provide your email address to reset  password")
+ }
+ sendPasswordResetEmail(auth, email)
+ .then(() => {
+    alert("Check your email")
+})
+.catch((error) => {
+   console.log(error.message);
+ 
+});
+     }
+
     return (
         <div className="hero  ">
         <div className="hero-content  flex-col lg:flex-row">
@@ -77,6 +110,7 @@ const Login = () => {
                         type="text"
                         name="email"
                         placeholder="email"
+                        ref={emailRef}
                         className="input input-bordered"
                         required
                       />
@@ -93,6 +127,7 @@ const Login = () => {
                         required
                       />
                     </div>
+                    <small ><button onClick={handleForgetpass} className="btn btn-link">Forget Password?</button> </small>
                     <div className="form-control mt-6">
                       <button className="btn  bg-purple-500 border-0 hover:bg-pink-600 ">
                         Login
@@ -114,8 +149,18 @@ const Login = () => {
                 className="btn bg-gradient-to-br from-pink-600  to-purple-600 border-0 mb-5 text-white"
               >
                 <FaGoogle />
-                <span className="text-black ps-3 font-bold">
+                <span className="text-white ps-3 font-bold">
                   Continue With google
+                </span>
+              </button>
+              
+              <button
+                 onClick={handleGithubSignIn}
+                className="btn bg-gradient-to-br from-pink-600  to-purple-600 border-0 mb-5 text-white"
+              >
+                <FaGoogle />
+                <span className="text-white ps-3 font-bold">
+                  Continue With Github
                 </span>
               </button>
               

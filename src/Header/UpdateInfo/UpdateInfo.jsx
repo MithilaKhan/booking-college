@@ -20,7 +20,7 @@ const UpdateInfo = () => {
         const updateInfo = {name , email ,college ,address }
         console.log(updateInfo);
   
-        fetch(`http://localhost:5000/user/${_id}`,{
+        fetch(`https://booking-college-server-mithilakhan.vercel.app/user/${_id}`,{
           method:"PUT" ,
           headers:{
              "content-type":"application/json"
