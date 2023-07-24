@@ -22,7 +22,7 @@ const FamousColleges = () => {
 
     return (
         <div>
-        <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="1000" className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-items-center gap-x-8">
+        <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="500" className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-items-center gap-x-8">
         {
             famousColleges.map(college => <FamousCollege key={college._id}
                 college={college}

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaStar } from 'react-icons/fa';
+import Aos from "aos";
 
 const Reviews = () => {
     const {user} = useContext(AuthContext)
@@ -14,8 +15,12 @@ const Reviews = () => {
             setReviews(data) 
         })
     } ,[])
+
+    useEffect(() => {
+      Aos.init({duration:500, easing: 'ease'})
+  },[])
     return (
-        <div className="lg:ms-44 md:ms-32">
+        <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="500" className="lg:ms-44 md:ms-32">
             {
                 reviews.map(review => <div key={review._id} className="chat chat-start">
              

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CollegeCard from "./CollegeCard";
+import Aos from "aos";
 
 
 const Colleges = () => {
@@ -13,9 +14,14 @@ const Colleges = () => {
             setColleges(data)
         })
     } ,[])
+
+    useEffect(() => {
+        Aos.init({duration:500, easing: 'ease'})
+    },[])
+
     return (
         <div>
-            <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-items-center gap-x-8">
+            <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="500" className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-4 justify-items-center gap-x-8">
             {
                 colleges.map(college => <CollegeCard key={college._id}
                     college={college}
